@@ -190,6 +190,7 @@ public final class MixedItemSection extends Section {
      * @param item {@code non-null;} the item to intern
      * @return {@code non-null;} the equivalent interned instance
      */
+    @SuppressWarnings("unchecked")
     public <T extends OffsettedItem> T intern(T item) {
         throwIfPrepared();
 
@@ -210,6 +211,7 @@ public final class MixedItemSection extends Section {
      * @param item {@code non-null;} the item to look for
      * @return {@code non-null;} the equivalent already-interned instance
      */
+    @SuppressWarnings("unchecked")
     public <T extends OffsettedItem> T get(T item) {
         throwIfNotPrepared();
 
