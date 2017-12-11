@@ -1,1 +1,1 @@
-include ':app', ':mdlibrary'
+include ':app', ':proxy-android'

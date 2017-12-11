@@ -69,10 +69,10 @@ apply plugin: 'com.jfrog.bintray'
 //gradlew bintrayUpload
 
 // 组织
-group = "individual.leobert.libs"
+group = "osp.leobert.android"
 
 // 根节点添加
-version = "0.0.1"
+version = "0.0.2"
 
 // 根节点添加
 def siteUrl = 'https://github.com/leobert-lan/MethodInterceptProxy'    // project homepage
