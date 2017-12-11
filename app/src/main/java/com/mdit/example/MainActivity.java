@@ -6,17 +6,17 @@ import android.util.Log;
 import android.view.View;
 
 import com.mdit.example.test.Test;
-import com.mdit.library.proxy.CallbackFilter;
-import com.mdit.library.proxy.Enhancer;
-import com.mdit.library.proxy.MethodInterceptor;
-import com.mdit.library.proxy.MethodProxy;
-import com.mdit.library.proxy.NoOp;
 
 import java.lang.reflect.Method;
 
+import osp.leobert.android.proxy.CallbackFilter;
+import osp.leobert.android.proxy.EnhancerProxy;
+import osp.leobert.android.proxy.method.MethodProxy;
+import osp.leobert.android.proxy.method.interceptor.MethodInterceptor;
+import osp.leobert.android.proxy.method.interceptor.NoOp;
+
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -26,41 +26,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void click1(View v){
+    public void click1(View v) {
 
-        Enhancer enhancer = new Enhancer(this);
-        enhancer.setSuperclass(Test.class);
-        enhancer.setCallback(new MethodInterceptor() {
+        EnhancerProxy enhancerProxy = new EnhancerProxy(this);
+        enhancerProxy.setSuperclass(Test.class);
+        enhancerProxy.setCallback(new MethodInterceptor() {
             @Override
             public Object intercept(Object object, Object[] args, MethodProxy methodProxy) throws Exception {
-                Log.e("TAG","intercept  -- before---");
+                Log.e("TAG", "intercept  -- before---");
                 Object obj = methodProxy.invokeSuper(object, args);
-                Log.e("TAG","intercept  -- after---");
+                Log.e("TAG", "intercept  -- after---");
                 return obj;
             }
         });
-        Test test = (Test) enhancer.create();
+        Test test = (Test) enhancerProxy.create();
 
         test.toast2(this);
 
 
     }
 
-    public void click2(View v){
+    public void click2(View v) {
 
-        Enhancer enhancer = new Enhancer(this);
-        enhancer.setSuperclass(Test.class);
-        enhancer.setCallbacks(new MethodInterceptor[]{NoOp.INSTANCE,new MethodInterceptor() {
+        EnhancerProxy enhancerProxy = new EnhancerProxy(this);
+        enhancerProxy.setSuperclass(Test.class);
+        enhancerProxy.setCallbacks(new MethodInterceptor[]{NoOp.INSTANCE, new MethodInterceptor() {
             @Override
             public Object intercept(Object object, Object[] args, MethodProxy methodProxy) throws Exception {
-                Log.e("TAG","intercept  -- before---");
+                Log.e("TAG", "intercept  -- before---");
                 Object obj = methodProxy.invokeSuper(object, args);
-                Log.e("TAG","intercept  -- after---");
+                Log.e("TAG", "intercept  -- after---");
                 return obj;
             }
-           }
+        }
         });
-        enhancer.setCallbackFilter(new CallbackFilter() {
+        enhancerProxy.setCallbackFilter(new CallbackFilter() {
             @Override
             public int accept(Method method) {
                 if (method.getName().equals("toast2"))
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 return 0;
             }
         });
-        Test test = (Test) enhancer.create();
+        Test test = (Test) enhancerProxy.create();
 
         test.toast3(this);
 

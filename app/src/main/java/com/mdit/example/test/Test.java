@@ -14,19 +14,20 @@ import android.widget.Toast;
 
 public class Test {
 
-    public void toast1(Context ctx){
+    public void toast1(Context ctx) {
         Toast.makeText(ctx, "--111111----", Toast.LENGTH_SHORT).show();
     }
 
-    public String test(){
+    public String test() {
         return "aabbcc";
     }
-    public void toast2(Context ctx){
+
+    public void toast2(Context ctx) {
         int aa = 333;
-        Toast.makeText(ctx, "--222222----"+aa, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx, "--222222----" + aa, Toast.LENGTH_SHORT).show();
     }
 
-    public void toast3(Context ctx){
+    public void toast3(Context ctx) {
         Toast.makeText(ctx, "--333333----", Toast.LENGTH_SHORT).show();
     }
 

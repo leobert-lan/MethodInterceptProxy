@@ -10,5 +10,6 @@ package com.mdit.example.test;
  */
 
 public class A {
-    public static void aa(){}
+    public static void aa() {
+    }
 }

@@ -9,9 +9,9 @@
 # java
 
 ```
-  Enhancer enhancer = new Enhancer(this);
-        enhancer.setSuperclass(Test.class);
-        enhancer.setCallback(new MethodInterceptor() {
+  Enhancer enhancerProxy = new Enhancer(this);
+        enhancerProxy.setSuperclass(Test.class);
+        enhancerProxy.setCallback(new MethodInterceptor() {
             @Override
             public Object intercept(Object object, Object[] args, MethodProxy methodProxy) throws Exception {
                 Log.e("TAG","intercept  -- before---");
@@ -20,16 +20,16 @@
                 return obj;
             }
         });
-        Test test = (Test) enhancer.create();
+        Test test = (Test) enhancerProxy.create();
 
         test.toast2(this);
 
 ```
 # More use 
 ```
- Enhancer enhancer = new Enhancer(this);
-        enhancer.setSuperclass(Test.class);
-        enhancer.setCallbacks(new MethodInterceptor[]{NoOp.INSTANCE,new MethodInterceptor() {
+ Enhancer enhancerProxy = new Enhancer(this);
+        enhancerProxy.setSuperclass(Test.class);
+        enhancerProxy.setCallbacks(new MethodInterceptor[]{NoOp.INSTANCE,new MethodInterceptor() {
             @Override
             public Object intercept(Object object, Object[] args, MethodProxy methodProxy) throws Exception {
                 Log.e("TAG","intercept  -- before---");
@@ -39,7 +39,7 @@
             }
            }
         });
-        enhancer.setCallbackFilter(new CallbackFilter() {
+        enhancerProxy.setCallbackFilter(new CallbackFilter() {
             @Override
             public int accept(Method method) {
                 if (method.getName().equals("toast2"))
@@ -47,7 +47,7 @@
                 return 0;
             }
         });
-        Test test = (Test) enhancer.create();
+        Test test = (Test) enhancerProxy.create();
 
         test.toast3(this);
 ```

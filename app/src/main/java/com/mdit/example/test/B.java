@@ -9,6 +9,7 @@ package com.mdit.example.test;
  * </pre>
  */
 
-public class B extends A{
-    public static void aa(){}
+public class B extends A {
+    public static void aa() {
+    }
 }
