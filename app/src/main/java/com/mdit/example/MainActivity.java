@@ -28,20 +28,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void click1(View v) {
 
-        EnhancerProxy enhancerProxy = new EnhancerProxy(this);
-        enhancerProxy.setSuperclass(Test.class);
-        enhancerProxy.setCallback(new MethodInterceptor() {
-            @Override
-            public Object intercept(Object object, Object[] args, MethodProxy methodProxy) throws Exception {
-                Log.e("TAG", "intercept  -- before---");
-                Object obj = methodProxy.invokeSuper(object, args);
-                Log.e("TAG", "intercept  -- after---");
-                return obj;
-            }
-        });
-        Test test = (Test) enhancerProxy.create();
+        try {
 
-        test.toast2(this);
+            EnhancerProxy enhancerProxy = new EnhancerProxy(MainActivity.this);
+            enhancerProxy.setSuperclass(Test.class);
+            enhancerProxy.setCallback(new MethodInterceptor() {
+                @Override
+                public Object intercept(Object object, Object[] args, MethodProxy methodProxy) throws Exception {
+                    Log.e("TAG", "intercept  -- before---");
+                    Object obj = methodProxy.invokeSuper(object, args);
+                    Log.e("TAG", "intercept  -- after---");
+                    return obj;
+                }
+            });
+            Test test = (Test) enhancerProxy.create();
+
+            test.toast2(MainActivity.this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -71,6 +76,5 @@ public class MainActivity extends AppCompatActivity {
         Test test = (Test) enhancerProxy.create();
 
         test.toast3(this);
-
     }
 }
