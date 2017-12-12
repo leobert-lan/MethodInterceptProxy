@@ -119,26 +119,26 @@ public class EnhancerProxy {
 		code.invokeDirect(superType.getConstructor(), null, thisRef);
 		code.returnVoid();
 
-		// setMethodInterceptor$EnhancerProxy$
-		MethodId<?, Void> setMethodInterceptorMethodId = subType.getMethod(TypeId.VOID, "setMethodInterceptor$EnhancerProxy$", methodInterceptorType);
+		// setMethodInterceptor$Enhancer$
+		MethodId<?, Void> setMethodInterceptorMethodId = subType.getMethod(TypeId.VOID, "setMethodInterceptor$Enhancer$", methodInterceptorType);
 		code = dexMaker.declare(setMethodInterceptorMethodId, Modifier.PUBLIC);
 		code.iput(fieldId, code.getThis(subType), code.getParameter(0, methodInterceptorType));
 		code.returnVoid();
 
-		// setCallBacksMethod$EnhancerProxy$
-		MethodId<?, Void> setMethodInterceptorsMethodId = subType.getMethod(TypeId.VOID, "setCallBacksMethod$EnhancerProxy$", methodInterceptorsType);
+		// setCallBacksMethod$Enhancer$
+		MethodId<?, Void> setMethodInterceptorsMethodId = subType.getMethod(TypeId.VOID, "setCallBacksMethod$Enhancer$", methodInterceptorsType);
 		code = dexMaker.declare(setMethodInterceptorsMethodId, Modifier.PUBLIC);
 		code.iput(fieldIds, code.getThis(subType), code.getParameter(0, methodInterceptorsType));
 		code.returnVoid();
 
-		// setCallBackFilterMethod$EnhancerProxy$
-		MethodId<?, Void> setCallBackFilterMethodId = subType.getMethod(TypeId.VOID, "setCallBackFilterMethod$EnhancerProxy$", callbackFilterType);
+		// setCallBackFilterMethod$Enhancer$
+		MethodId<?, Void> setCallBackFilterMethodId = subType.getMethod(TypeId.VOID, "setCallBackFilterMethod$Enhancer$", callbackFilterType);
 		code = dexMaker.declare(setCallBackFilterMethodId, Modifier.PUBLIC);
 		code.iput(fieldFilterId, code.getThis(subType), code.getParameter(0, callbackFilterType));
 		code.returnVoid();
 
-		// executeSuperMethod$EnhancerProxy$
-		MethodId<?, Object> executeSuperMethodMethodId = subType.getMethod(TypeId.OBJECT, "executeSuperMethod$EnhancerProxy$", stringType, classesType, objectsType);
+		// executeSuperMethod$Enhancer$
+		MethodId<?, Object> executeSuperMethodMethodId = subType.getMethod(TypeId.OBJECT, "executeSuperMethod$Enhancer$", stringType, classesType, objectsType);
 		code = dexMaker.declare(executeSuperMethodMethodId, Modifier.PUBLIC);
 		Local<Object> retObjLocal = code.newLocal(objectType);
 		Local<Class> subClassLocal = code.newLocal(classType);
