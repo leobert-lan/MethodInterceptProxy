@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MethodInterceptProxy.iml" filepath="$PROJECT_DIR$/MethodInterceptProxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/proxy-android/mdlibrary.iml" filepath="$PROJECT_DIR$/proxy-android/mdlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proxy-android/proxy-android.iml" filepath="$PROJECT_DIR$/proxy-android/proxy-android.iml" />
     </modules>
   </component>
 </project>
